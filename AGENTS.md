@@ -137,3 +137,10 @@ already set. Until Shek creates a Worker-edit token, every deploy is manual from
 Live connector rehearsal in ChatGPT desktop, and the 3-minute video. Both are the critical
 path; new features are not. The video arc is one page shot three ways — desk (keys), across
 the room (voice + palm), glasses context (voice + ring) — with no code change between shots.
+
+## Moved from the workspace root notes (2026-09-19)
+
+- Remaining critical path is the ChatGPT connector rehearsal and the video, not features.
+- Never prefix `env -u CLOUDFLARE_API_TOKEN` (the Zo secret is the working credential since
+  2026-09-19; see `Documents/agent-notes/cloudflare-wrangler.md`). CI verifies but skips deploy
+  until a `CLOUDFLARE_API_TOKEN` repo secret exists, so confirm the live bundle hash after pushing.
