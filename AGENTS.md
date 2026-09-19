@@ -122,10 +122,9 @@ needs a live `agent-browser` pass too.**
 
 ## Deploying
 
-`bun run deploy` — note the script runs `env -u CLOUDFLARE_API_TOKEN wrangler deploy`.
-Both Cloudflare tokens in Zo secrets are **expired**; unsetting the stale env var lets
-wrangler fall back to its cached OAuth login, which works. Do not "fix" that by removing
-the `env -u`.
+`bun run deploy` runs `wrangler deploy` with the Zo secret `CLOUDFLARE_API_TOKEN`, which is
+a valid account-owned token since 2026-09-19 and the only working credential (the cached
+OAuth login is dead). Never prefix `env -u CLOUDFLARE_API_TOKEN`; it throws that away.
 
 `.github/workflows/deploy.yml` runs tests + build on every PR and push, then deploys only
 if the `CLOUDFLARE_API_TOKEN` repo secret exists. It does not, so CI verifies and **skips
